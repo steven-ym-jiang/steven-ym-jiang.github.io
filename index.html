@@ -10,71 +10,83 @@
 <meta property="og:type" content="website">
 <meta name="robots" content="index, follow">
 <style>
+  /* LJ Visual OS v0.1 品牌色板 */
   :root {
-    --ink: #1a1a1a;
-    --accent: #c4452b;
-    --paper: #faf7f2;
-    --muted: #666;
-    --line: #e5ded2;
+    --ink: #17140F;      /* Ink 墨黑 — 暖调黑 */
+    --paper: #F5F2EB;    /* Paper 暖白 — 纸白 */
+    --gray-700: #4A453D; /* 次级文字 */
+    --gray-500: #8A8377; /* 辅助信息 */
+    --gray-300: #C9C3B6; /* 分隔线 */
+    --gray-100: #E8E4DA; /* 分区底 */
+    --amber: #C0561F;    /* 琥珀 Choice Signal — 浅底强调色 */
+    --text: #3F3B35;     /* 正文文字色（不用纯黑） */
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
-    background: var(--paper); color: var(--ink);
-    line-height: 1.7; -webkit-font-smoothing: antialiased;
+    background: var(--paper); color: var(--text);
+    line-height: 1.75;            /* 品牌排版 §6.3 行高 */
+    letter-spacing: 0.5px;        /* 品牌排版 §6.4 中文加 0.5px 字距 */
+    -webkit-font-smoothing: antialiased;
   }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 56px 24px 80px; }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 64px 24px 88px; }
+
   /* 顶部 */
-  .hero { margin-bottom: 56px; }
+  .hero { margin-bottom: 64px; }
+  .avatar {
+    width: 88px; height: 88px; border-radius: 12px;
+    margin-bottom: 24px; display: block;
+  }
   .hero h1 {
-    font-size: 40px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.25;
-    margin-bottom: 16px;
+    font-size: 40px; font-weight: 700; letter-spacing: 0.5px; line-height: 1.3;
+    color: var(--ink); margin-bottom: 18px;
   }
-  .hero .sub {
-    font-size: 18px; color: var(--accent); font-weight: 600; margin-bottom: 20px;
-  }
-  .hero p.tagline { font-size: 17px; color: var(--muted); }
+  .hero .sub { font-size: 18px; color: var(--amber); font-weight: 600; margin-bottom: 18px; }
+  .hero p.tagline { font-size: 17px; color: var(--gray-700); }
+
   /* 区块 */
-  section { margin-bottom: 48px; }
+  section { margin-bottom: 56px; }
   h2 {
-    font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--accent); margin-bottom: 20px; padding-bottom: 8px;
-    border-bottom: 1px solid var(--line);
+    font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--amber); margin-bottom: 24px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--gray-300);
   }
   /* 能力区块 */
-  .cap { display: grid; gap: 14px; margin-bottom: 24px; }
-  .cap-item { display: flex; gap: 14px; align-items: baseline; }
+  .cap { display: grid; gap: 16px; margin-bottom: 16px; }
+  .cap-item { display: flex; gap: 16px; align-items: baseline; }
   .cap-item .k { flex: 0 0 130px; font-weight: 600; color: var(--ink); }
-  .cap-item .v { color: var(--muted); }
+  .cap-item .v { color: var(--gray-700); }
+
   /* 文章卡片 */
-  .post {
-    padding: 22px 0; border-bottom: 1px solid var(--line);
-  }
+  .post { padding: 26px 0; border-bottom: 1px solid var(--gray-300); }
   .post:last-child { border-bottom: none; }
   .post .tag {
-    display: inline-block; font-size: 12px; color: var(--accent);
-    border: 1px solid var(--accent); border-radius: 20px;
-    padding: 1px 10px; margin-bottom: 8px;
+    display: inline-block; font-size: 12px; color: var(--amber);
+    border: 1px solid var(--amber); border-radius: 20px;
+    padding: 2px 12px; margin-bottom: 10px;
   }
-  .post h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
-  .post .lead { font-size: 15px; color: var(--muted); }
-  .post .meta { font-size: 13px; color: #999; margin-top: 8px; }
-  .post a { color: var(--ink); text-decoration: none; }
-  .post a:hover h3 { color: var(--accent); }
+  .post h3 { font-size: 20px; font-weight: 600; margin-bottom: 10px; color: var(--ink); }
+  .post .lead { font-size: 15px; color: var(--gray-700); }
+  .post .meta { font-size: 13px; color: var(--gray-500); margin-top: 10px; }
+  .post a { text-decoration: none; }
+  .post a:hover h3 { color: var(--amber); }
+
   /* 联系 */
-  .contact { font-size: 15px; color: var(--muted); }
-  .contact .row { margin-bottom: 8px; }
-  .contact .lbl { font-weight: 600; color: var(--ink); margin-right: 8px; }
-  .contact a { color: var(--accent); text-decoration: none; }
+  .contact { font-size: 15px; color: var(--gray-700); }
+  .contact .row { margin-bottom: 10px; }
+  .contact .lbl { font-weight: 600; color: var(--ink); margin-right: 10px; }
+  .contact a { color: var(--amber); text-decoration: none; }
   .contact a:hover { text-decoration: underline; }
-  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line);
-    font-size: 13px; color: #999; }
+
+  footer { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--gray-300);
+    font-size: 13px; color: var(--gray-500); }
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <header class="hero">
+    <img class="avatar" src="assets/avatar.svg" alt="LJ — 供应链实战与 AI 工程化" width="88" height="88">
     <h1>Steven Jiang<br>蒋毓敏</h1>
     <div class="sub">供应链实战 × AI 工程化</div>
     <p class="tagline">21 年国际物流与供应链经验。从真实业务问题出发，探索复杂业务的分析、决策与 AI 落地。</p>
